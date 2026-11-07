@@ -807,9 +807,12 @@
         </div>
 
         <div class="space-y-1.5">
-          <div class="flex items-center justify-between text-xs">
-            <span class="font-semibold text-slate-500">Rasio Pengeluaran Non-Investasi terhadap Pemasukan</span>
-            <span id="analisa50PctText" class="font-extrabold text-navy-950">0% / Maks. 50%</span>
+          <div class="flex items-center justify-between text-xs gap-2">
+            <span class="font-semibold text-slate-500 truncate sm:overflow-visible">
+              <span class="hidden sm:inline">Rasio Pengeluaran Non-Investasi terhadap Pemasukan</span>
+              <span class="sm:hidden">Rasio Non-Investasi</span>
+            </span>
+            <span id="analisa50PctText" class="font-extrabold text-navy-950 whitespace-nowrap shrink-0 text-right">0% / Maks. 50%</span>
           </div>
           <div class="relative w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200/60">
             <div id="analisa50Bar" class="bg-emerald-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -825,22 +828,22 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
           <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
             <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Pengeluaran Non-Investasi</div>
-            <div id="valAnalisaNonInv" class="text-sm sm:text-base font-extrabold text-navy-950 mt-1">Rp 0</div>
+            <div id="valAnalisaNonInv" class="text-sm sm:text-base font-extrabold text-navy-950 mt-1 whitespace-nowrap">Rp 0</div>
             <div class="text-[10px] text-slate-400 mt-0.5">Konsumsi &amp; kebutuhan rutin</div>
           </div>
           <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
             <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Batas Maks. (50% Masuk)</div>
-            <div id="valAnalisaBatas50" class="text-sm sm:text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-1">Rp 0</div>
+            <div id="valAnalisaBatas50" class="text-sm sm:text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-1 whitespace-nowrap">Rp 0</div>
             <div id="subAnalisaBatas50" class="text-[10px] text-slate-400 mt-0.5">50% dari pemasukan gajian</div>
           </div>
           <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
             <div id="lblAnalisaSisaKuota" class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Sisa Kuota Aman (50%)</div>
-            <div id="valAnalisaSisaKuota" class="text-sm sm:text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-1">Rp 0</div>
+            <div id="valAnalisaSisaKuota" class="text-sm sm:text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-1 whitespace-nowrap">Rp 0</div>
             <div id="subAnalisaSisaKuota" class="text-[10px] text-slate-400 mt-0.5">Ruang belanja aman tersisa</div>
           </div>
           <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/70">
             <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Pengeluaran Investasi</div>
-            <div id="valAnalisaInvExcluded" class="text-sm sm:text-base font-extrabold text-bronze-600 dark:text-amber-400 mt-1">Rp 0</div>
+            <div id="valAnalisaInvExcluded" class="text-sm sm:text-base font-extrabold text-bronze-600 dark:text-amber-400 mt-1 whitespace-nowrap">Rp 0</div>
             <div class="text-[10px] text-slate-400 mt-0.5">Dikecualikan dari batas 50%</div>
           </div>
         </div>
@@ -3442,14 +3445,14 @@
         if (elSisaLbl) elSisaLbl.innerText = 'Sisa Kuota Aman (50%)';
         if (elSisaVal) {
           elSisaVal.innerText = formatRupiah(selisih50);
-          elSisaVal.className = 'text-sm sm:text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-1';
+          elSisaVal.className = 'text-sm sm:text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-1 whitespace-nowrap';
         }
         if (elSisaSub) elSisaSub.innerText = 'Ruang belanja aman tersisa';
       } else {
         if (elSisaLbl) elSisaLbl.innerText = 'Melebihi Batas 50%';
         if (elSisaVal) {
           elSisaVal.innerText = (appState.isPrivacyMode ? formatRupiah(Math.abs(selisih50)) : ('- ' + formatRupiah(Math.abs(selisih50))));
-          elSisaVal.className = 'text-sm sm:text-base font-extrabold text-rose-600 dark:text-rose-400 mt-1';
+          elSisaVal.className = 'text-sm sm:text-base font-extrabold text-rose-600 dark:text-rose-400 mt-1 whitespace-nowrap';
         }
         if (elSisaSub) elSisaSub.innerText = 'Melampaui batas 50% pemasukan';
       }
@@ -3859,25 +3862,25 @@
           var userBadgeColor = 'pencatat-badge';
 
           var item = document.createElement('div');
-          item.className = 'py-3 flex items-center justify-between';
+          item.className = 'py-3 flex items-center justify-between gap-3';
           item.innerHTML = '' +
-            '<div class="flex items-center space-x-3">' +
-            '<div class="w-9 h-9 rounded-xl flex items-center justify-center ' + iconColor + ' font-bold text-xs">' +
+            '<div class="flex items-center space-x-3 min-w-0 flex-1">' +
+            '<div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ' + iconColor + ' font-bold text-xs">' +
             (isInv ? 'INV' : (isTrf ? 'TRF' : (isOut ? 'OUT' : 'IN'))) +
             '</div>' +
-            '<div>' +
-            '<div class="text-xs font-bold text-navy-950 leading-tight">' + (t.keterangan || t.kategori) + '</div>' +
-            '<div class="text-[11px] text-slate-400 mt-0.5 flex items-center space-x-2">' +
-            '<span>' + t.tanggal + '</span>' +
+            '<div class="min-w-0 flex-1">' +
+            '<div class="text-xs font-bold text-navy-950 leading-tight truncate" title="' + (t.keterangan || t.kategori) + '">' + (t.keterangan || t.kategori) + '</div>' +
+            '<div class="text-[11px] text-slate-400 mt-0.5 flex items-center space-x-2 flex-wrap">' +
+            '<span class="whitespace-nowrap">' + t.tanggal + '</span>' +
             '<span>•</span>' +
-            '<span>' + (isTrf ? (t.dompetAsal + ' → ' + t.dompetTujuan) : t.dompetAsal) + '</span>' +
-            '<span class="inline-block px-1.5 py-0.2 rounded text-[9px] font-bold ' + userBadgeColor + '">' + t.pencatat + '</span>' +
+            '<span class="truncate max-w-[110px] sm:max-w-none">' + (isTrf ? (t.dompetAsal + ' → ' + t.dompetTujuan) : t.dompetAsal) + '</span>' +
+            '<span class="inline-block px-1.5 py-0.2 rounded text-[9px] font-bold whitespace-nowrap ' + userBadgeColor + '">' + t.pencatat + '</span>' +
             '</div>' +
             '</div>' +
             '</div>' +
-            '<div class="text-right">' +
-            '<div class="text-xs font-bold ' + nominalColor + '">' + (appState.isPrivacyMode ? '••••••••' : (sign + formatRupiah(t.nominal))) + '</div>' +
-            '<div class="text-[10px] text-slate-400">' + t.kategori + '</div>' +
+            '<div class="text-right shrink-0 ml-1">' +
+            '<div class="text-xs font-bold whitespace-nowrap ' + nominalColor + '">' + (appState.isPrivacyMode ? '••••••••' : (sign + formatRupiah(t.nominal))) + '</div>' +
+            '<div class="text-[10px] text-slate-400 whitespace-nowrap">' + t.kategori + '</div>' +
             '</div>';
           recentContainer.appendChild(item);
         }
@@ -3900,15 +3903,15 @@
           bItem.className = 'space-y-1.5';
           bItem.innerHTML = '' +
             '<div class="flex items-center justify-between text-xs">' +
-            '<span class="font-bold text-navy-950">' + cat.nama + '</span>' +
-            '<span class="font-semibold text-slate-500">' + formatRupiah(used) + ' / ' + formatRupiah(cat.batasBudget) + '</span>' +
+            '<span class="font-bold text-navy-950 truncate mr-2">' + cat.nama + '</span>' +
+            '<span class="font-semibold text-slate-500 whitespace-nowrap shrink-0">' + formatRupiah(used) + ' / ' + formatRupiah(cat.batasBudget) + '</span>' +
             '</div>' +
             '<div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">' +
             '<div class="' + barColor + ' h-2 rounded-full transition-all duration-500" style="width: ' + pct + '%"></div>' +
             '</div>' +
             '<div class="flex items-center justify-between text-[10px] text-slate-400">' +
             '<span>Terpakai ' + pct + '%</span>' +
-            '<span>Sisa: ' + formatRupiah(Math.max(cat.batasBudget - used, 0)) + '</span>' +
+            '<span class="whitespace-nowrap shrink-0">Sisa: ' + formatRupiah(Math.max(cat.batasBudget - used, 0)) + '</span>' +
             '</div>';
           budgetContainer.appendChild(bItem);
         }
@@ -4154,18 +4157,18 @@
         tr.innerHTML = '' +
           '<td class="py-3 px-4">' +
           '<div class="font-bold text-navy-950 text-xs">' + (t.keterangan || t.kategori) + '</div>' +
-          '<div class="text-[11px] text-slate-400 font-mono mt-0.5">' + t.id + ' • ' + t.tanggal + '</div>' +
+          '<div class="text-[11px] text-slate-400 font-mono mt-0.5 whitespace-nowrap">' + t.id + ' • ' + t.tanggal + '</div>' +
           '</td>' +
           '<td class="py-3 px-4">' +
-          '<div class="font-semibold text-slate-700">' + t.kategori + '</div>' +
-          '<div class="text-[11px] text-slate-400 mt-0.5">' + (isTrf ? (t.dompetAsal + ' → ' + t.dompetTujuan) : t.dompetAsal) + '</div>' +
+          '<div class="font-semibold text-slate-700 whitespace-nowrap">' + t.kategori + '</div>' +
+          '<div class="text-[11px] text-slate-400 mt-0.5 whitespace-nowrap">' + (isTrf ? (t.dompetAsal + ' → ' + t.dompetTujuan) : t.dompetAsal) + '</div>' +
           '</td>' +
-          '<td class="py-3 px-4">' +
+          '<td class="py-3 px-4 whitespace-nowrap">' +
           '<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold ' + userBadgeColor + '">' + t.pencatat + '</span>' +
           '</td>' +
-          '<td class="py-3 px-4 text-right">' +
-          '<div class="font-extrabold text-xs ' + nominalColor + '">' + (appState.isPrivacyMode ? '••••••••' : (sign + formatRupiah(t.nominal, true))) + '</div>' +
-          '<div class="text-[10px] text-slate-400">' + t.jenis + '</div>' +
+          '<td class="py-3 px-4 text-right whitespace-nowrap">' +
+          '<div class="font-extrabold text-xs whitespace-nowrap ' + nominalColor + '">' + (appState.isPrivacyMode ? '••••••••' : (sign + formatRupiah(t.nominal, true))) + '</div>' +
+          '<div class="text-[10px] text-slate-400 whitespace-nowrap">' + t.jenis + '</div>' +
           '</td>' +
           '<td class="py-3 px-4 text-center">' +
           '<button onclick="confirmDeleteTrx(\'' + t.id + '\')" class="p-1 text-slate-400 hover:text-rose-600 rounded interactive-btn" title="Hapus Transaksi">' +
